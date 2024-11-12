@@ -1,0 +1,12 @@
+<h1>My Tasks</h1>
+
+<ul style="list-style-type: none">
+  <% @tasks.each do |task| %>
+  <li style="display: flex; align-items: center; margin-bottom: 10px; padding-right: 10px">
+  <%= form_with model: task, local: true do |form| %><%= form.check_box :completed, {}, true, false %><% end %>
+  <%= link_to task.title, task_path(task) %>
+  </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Add a new task", new_task_path %></p>
